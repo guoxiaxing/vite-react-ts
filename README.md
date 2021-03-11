@@ -1,6 +1,6 @@
 # React-TS 环境搭建
 
-react + ts + css + eslint + husky
+react + ts + css + eslint + husky + commitlint
 
 ## 使用 vite 搭建 React-TS 项目
 
@@ -162,3 +162,11 @@ module.exports = {
   },
 };
 ```
+
+## 查看 husky 是否生效
+
+cd .git/hooks
+
+看是否有 pre-commit/commit-msg 等没有.sample 的文件
+
+如果没有的话就删掉 node_modules 重新运行 yarn 安装一下依赖
