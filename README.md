@@ -13,6 +13,7 @@
   - [commitlint 校验提交信息格式](#commitlint-%E6%A0%A1%E9%AA%8C%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%E6%A0%BC%E5%BC%8F)
   - [查看 husky 是否生效](#%E6%9F%A5%E7%9C%8B-husky-%E6%98%AF%E5%90%A6%E7%94%9F%E6%95%88)
   - [项目搭建遇到的问题](#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98)
+  - [vite 官网地址](#vite-%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -216,3 +217,7 @@ button 元素需要指名 type 属性的值
 - 去掉`lint-staged`的`git add`命令
 
 新版本的 lint-staged 会自动将文件 add 到暂存区
+
+## vite 官网地址
+
+[vite 官网](https://vitejs.dev/guide/#browser-support)
