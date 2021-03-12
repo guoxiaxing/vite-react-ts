@@ -1,8 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
 - [React-TS 环境搭建](#react-ts-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
   - [使用 vite 搭建 React-TS 项目](#%E4%BD%BF%E7%94%A8-vite-%E6%90%AD%E5%BB%BA-react-ts-%E9%A1%B9%E7%9B%AE)
   - [配置.vscode](#%E9%85%8D%E7%BD%AEvscode)
@@ -14,6 +12,7 @@
   - [prettier 格式化代码](#prettier-%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81)
   - [commitlint 校验提交信息格式](#commitlint-%E6%A0%A1%E9%AA%8C%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%E6%A0%BC%E5%BC%8F)
   - [查看 husky 是否生效](#%E6%9F%A5%E7%9C%8B-husky-%E6%98%AF%E5%90%A6%E7%94%9F%E6%95%88)
+  - [项目搭建遇到的问题](#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

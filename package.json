@@ -20,6 +20,9 @@
       "eslint",
       "prettier --write",
       "git add"
+    ],
+    "*.md": [
+      "git add"
     ]
   },
   "dependencies": {
