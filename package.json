@@ -11,18 +11,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run doctoc && lint-staged",
+      "pre-commit": "yarn run doctoc && git add '*.md' && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx,cjs,mjs}": [
       "eslint",
-      "prettier --write",
-      "git add"
-    ],
-    "*.md": [
-      "git add"
+      "prettier --write"
     ]
   },
   "dependencies": {

@@ -212,3 +212,7 @@ error  Missing an explicit type attribute for button  react/button-has-type
 ```
 
 button 元素需要指名 type 属性的值
+
+- 去掉`lint-staged`的`git add`命令
+
+新版本的 lint-staged 会自动将文件 add 到暂存区
