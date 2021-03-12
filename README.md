@@ -1,6 +1,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
 
 - [React-TS 环境搭建](#react-ts-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
   - [使用 vite 搭建 React-TS 项目](#%E4%BD%BF%E7%94%A8-vite-%E6%90%AD%E5%BB%BA-react-ts-%E9%A1%B9%E7%9B%AE)
@@ -116,13 +117,13 @@ package.json 中进行配置
 ```
 "husky": {
     "hooks": {
-      "pre-commit": "npm run doctoc && lint-staged",
+      "pre-commit": "yarn run doctoc && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx,cjs,mjs}":[
-      "eslint --fix",
+      "eslint",
       "prettier --write",
       "git add"
     ]
@@ -153,7 +154,7 @@ yarn add @commitlint/config-conventional @commitlint/cli -D
 ```
 "husky": {
     "hooks": {
-      "pre-commit": "npm run doctoc && lint-staged",
+      "pre-commit": "yarn run doctoc && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
@@ -188,3 +189,23 @@ cd .git/hooks
 看是否有 pre-commit/commit-msg 等没有.sample 的文件
 
 如果没有的话就删掉 node_modules 重新运行 yarn 安装一下依赖
+
+## 项目搭建遇到的问题
+
+- pre-commit 里面的 lint-staged 好像没有生效
+
+debug 之路： 文件被 staged 了么？？
+
+一开始还不清楚 lint-staged 的作用机制是什么，看人家配置 src/\*\*/\*.js 以为会对匹配的所有 js 文件都做一次 lint，后面看了 lint-staged 的源码才发现值针对变更的文件，也就是 git add 后的文件做 lint 效验，所以这名字可以这么翻译：lint staged files。
+
+也就是说 lint-staged 没有生效可能是你并没有在该次修改中修改 lint-staged 规则里的文件
+
+[问题答案来源](https://zhuanlan.zhihu.com/p/102104085)
+
+- eslint 报错
+
+```
+error  Missing an explicit type attribute for button  react/button-has-type
+```
+
+button 元素需要指名 type 属性的值
