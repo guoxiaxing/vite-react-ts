@@ -18,7 +18,7 @@
 
 # React-TS 环境搭建
 
-react + ts + css + eslint + husky + commitlint
+react + ts + css + eslint + husky + commitlint + lint-staged
 
 ## 使用 vite 搭建 React-TS 项目
 
