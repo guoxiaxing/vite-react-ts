@@ -121,12 +121,16 @@ package.json 中进行配置
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx,cjs,mjs}":[
+    "src/**/*.{ts,tsx,js,jsx,cjs,mjs}": [
       "eslint",
       "prettier --write",
       "git add"
+    ],
+    // 因为每次修改.md文件都会在pre-commit之前调用 yarn run doctoc 生成目录 导致.md文件又发生变化，需要重新被add
+    "*.md": [
+      "git add"
     ]
-  }
+  },
 
 ```
 
