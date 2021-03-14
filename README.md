@@ -117,21 +117,16 @@ package.json 中进行配置
 ```
 "husky": {
     "hooks": {
-      "pre-commit": "yarn run doctoc && lint-staged",
+      "pre-commit": "yarn run doctoc && git add '*.md' && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx,cjs,mjs}": [
+    "src/**/*.{ts,tsx,js,jsx,cjs,mjs}":[
       "eslint",
       "prettier --write",
-      "git add"
-    ],
-    // 因为每次修改.md文件都会在pre-commit之前调用 yarn run doctoc 生成目录 导致.md文件又发生变化，需要重新被add
-    "*.md": [
-      "git add"
     ]
-  },
+  }
 
 ```
 
@@ -158,10 +153,10 @@ yarn add @commitlint/config-conventional @commitlint/cli -D
 ```
 "husky": {
     "hooks": {
-      "pre-commit": "yarn run doctoc && lint-staged",
+      "pre-commit": "yarn run doctoc && git add '*.md' && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  }
+  },
 ```
 
 commitlint.config.js
