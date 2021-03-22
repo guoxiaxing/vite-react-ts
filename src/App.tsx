@@ -1,45 +1,102 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React, { Component, FC } from 'react';
 import './App.css';
+import useDraggable, { BAR } from './hooks/useDraggable';
 
-function App() {
-  const [count, setCount] = useState(0);
+const list = [
+  {
+    src: 'https://t7.baidu.com/it/u=4162611394,4275913936&fm=193&f=GIF',
+    title: '万事屋找我',
+  },
+  {
+    title: '吃吃吃……',
+    src: 'https://t7.baidu.com/it/u=2582370511,530426427&fm=193&f=GIF',
+  },
+  {
+    title: '汪汪',
+    src: 'https://t7.baidu.com/it/u=2141219545,3103086273&fm=193&f=GIF',
+  },
+];
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!!!</p>
-        <p>
-          <button type="button" onClick={() => setCount(c => c + 1)}>
-            count is: {count} ！！！
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  );
+function cls(def: string, conditions: [boolean, string]) {
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const list = [def];
+  if (conditions[0]) {
+    list.push(conditions[1]);
+  }
+  return list.join(' ');
 }
 
-export default App;
+const Card: FC<{ title: string; src: string }> = ({ title, src }) => {
+  return (
+    <div className="card">
+      <img src={src} alt="" />
+      <span>{title}</span>
+    </div>
+  );
+};
+const Draggable: FC<any> = ({ children, eventHandlers, dragging, id }) => {
+  return (
+    <div
+      {...eventHandlers}
+      draggable
+      className={cls('draggable', [dragging === id, 'dragging'])}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Bar: FC<any> = ({ id, dragging, dragOver, eventHandlers }) => {
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+  if (id === dragging + 1) {
+    return null;
+  }
+
+  return (
+    <div
+      {...eventHandlers}
+      className={cls('draggable--bar', [dragOver === id, 'dragover'])}
+    >
+      <div
+        className="inner"
+        style={{
+          height: id === dragOver ? '80px' : '0px',
+        }}
+      />
+    </div>
+  );
+};
+const DraggableList: FC<{ list: { title: string; src: string }[] }> = ({
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  list,
+}) => {
+  const { dragList, createDropperProps, createDraggerProps } = useDraggable(
+    list
+  );
+  return (
+    <div className="draggableList">
+      {dragList.map((item, i) => {
+        if (item.type === BAR) {
+          return <Bar key={item.id} id={i} {...createDropperProps(i)} />;
+        } else {
+          return (
+            <Draggable {...createDraggerProps(i, item.id)}>
+              <Card {...item.data} />
+            </Draggable>
+          );
+        }
+      })}
+    </div>
+  );
+};
+
+// eslint-disable-next-line react/prefer-stateless-function
+export default class App extends Component {
+  render() {
+    return (
+      <>
+        <DraggableList list={list} />
+      </>
+    );
+  }
+}
