@@ -1,6 +1,11 @@
-import React, { Component, FC } from 'react';
+import React, { Component, createContext, FC, useContext } from 'react';
 import './App.css';
 import useDraggable, { BAR } from './hooks/useDraggable';
+// import ReducerDemo from './components/ReducerDemo';
+// import ContextDemo from './components/ContextDemo';
+// import HookDemo from './components/HookDemo';
+// import RefDemo from './components/RefDemo';
+import CallbackMemoDemo from './components/CallbackMemoDemo';
 
 const list = [
   {
@@ -90,12 +95,33 @@ const DraggableList: FC<{ list: { title: string; src: string }[] }> = ({
   );
 };
 
+const bgColor = 'black';
+export const BgContext = createContext<string>(bgColor);
+
 // eslint-disable-next-line react/prefer-stateless-function
 export default class App extends Component {
+  // constructor(props: any) {
+  //   super(props);
+  //   this.state = {
+  //     bgColor: 'pink',
+  //   };
+  // }
   render() {
     return (
       <>
-        <DraggableList list={list} />
+        {/* <DraggableList list={list} /> */}
+        {/* <ReducerDemo /> */}
+        {/* <BgContext.Provider value={this.state.bgColor}>
+          <ContextDemo />
+        </BgContext.Provider>
+        <input
+          type="color"
+          onChange={e => this.setState({ bgColor: e.target.value })}
+        /> */}
+        {/* <HookDemo /> */}
+        {/* <RefDemo /> */}
+
+        <CallbackMemoDemo />
       </>
     );
   }
